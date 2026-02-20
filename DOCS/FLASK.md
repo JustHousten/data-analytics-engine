@@ -56,11 +56,30 @@ wert = request.form["feldname"]
 ---
 
 ## render_template
-Sucht automatisch im `templates/` Ordner nach der HTML-Datei.
+`render_template("index.html")` macht drei Dinge:
+1. **Sucht** die Datei im `templates/` Ordner
+2. **Verarbeitet** sie (kann Python-Variablen einsetzen)
+3. **Gibt** das fertige HTML zurück
+
+Erst `return render_template(...)` schickt es wirklich an den Browser!
 
 ```python
 return render_template("index.html")
 ```
+
+---
+
+## redirect
+Leitet den Browser nach einer Aktion auf eine andere Seite weiter:
+```python
+return redirect("/")    # leitet zur Startseite weiter
+```
+
+---
+
+## GET vs POST
+- **GET** = Daten werden in der URL mitgeschickt (z.B. Suche). Sichtbar für jeden.
+- **POST** = Daten werden unsichtbar im Hintergrund geschickt. Für Formulare die Daten speichern.
 
 ---
 
