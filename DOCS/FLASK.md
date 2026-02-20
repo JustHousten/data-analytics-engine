@@ -93,3 +93,49 @@ Zeigt bei Fehlern genau wo und was das Problem ist. **Niemals** im fertigen Prod
 python app.py
 ```
 Erreichbar unter: `http://127.0.0.1:5000`
+
+---
+
+## Jinja2 - Templates
+
+Jinja2 ist das Template-System von Flask. Es erlaubt Python-Variablen und Logik direkt im HTML zu verwenden.
+
+### Variable ausgeben
+```html
+{{ variablenname }}
+```
+Der Name muss exakt dem Namen entsprechen den Flask in `render_template` mitschickt:
+```python
+return render_template("seite.html", eintraege=eintraege)
+```
+```html
+{{ eintraege }}
+```
+
+### Variable an HTML übergeben
+```python
+# Links vom = → Name im HTML
+# Rechts vom = → Python Variable
+return render_template("seite.html", eintraege=eintraege)
+```
+
+### Schleife
+```html
+{% for eintrag in eintraege %}
+    {{ eintrag.item_name }}
+{% endfor %}
+```
+
+### If-Bedingung
+```html
+{% if eintraege %}
+    Es gibt Einträge!
+{% else %}
+    Keine Einträge vorhanden.
+{% endif %}
+```
+
+### Zusammenfassung Syntax
+- `{{ }}` = Wert ausgeben
+- `{% %}` = Logik (for, if, etc.)
+- `{# #}` = Kommentar (wird nicht angezeigt)

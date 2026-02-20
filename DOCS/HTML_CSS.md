@@ -45,3 +45,45 @@
 - `type="number"` = nur Zahlen
 - `type="date"` = Datumsauswahl
 
+---
+
+## Tabellen
+
+```html
+<table>
+    <thead>                        <!-- Kopfzeile mit Spaltenüberschriften -->
+        <tr>                       <!-- tr = table row = eine Zeile -->
+            <th>Spalte 1</th>      <!-- th = table header = Überschrift -->
+            <th>Spalte 2</th>
+        </tr>
+    </thead>
+    <tbody>                        <!-- Inhalt der Tabelle -->
+        <tr>                       <!-- eine Datenzeile -->
+            <td>Wert 1</td>        <!-- td = table data = eine Zelle -->
+            <td>Wert 2</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+### Elemente
+- `<table>` = die gesamte Tabelle
+- `<thead>` = Kopfbereich (Überschriften)
+- `<tbody>` = Inhaltsbereich (Daten)
+- `<tr>` = eine Zeile
+- `<th>` = eine Überschriften-Zelle
+- `<td>` = eine Daten-Zelle
+
+### Mit Jinja2 Schleife
+```html
+<tbody>
+    {% for eintrag in eintraege %}
+    <tr>
+        <td>{{ eintrag.item_name }}</td>
+        <td>{{ eintrag.item_quantity }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+```
+Für jeden Eintrag in der Datenbank → eine neue Zeile in der Tabelle.
+

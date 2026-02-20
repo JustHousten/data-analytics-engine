@@ -220,3 +220,44 @@ from datetime import datetime
 ```
 python -m pip install flask-sqlalchemy
 ```
+
+### Alle Einträge abrufen
+```python
+eintraege = Uebersicht.query.all()
+```
+
+---
+
+## Jinja2 - Templates
+
+Jinja2 ist das Template-System von Flask. Es erlaubt Python-Variablen und Logik direkt im HTML zu verwenden.
+
+### Variable übergeben und ausgeben
+```python
+# In app.py - links vom = ist der Name im HTML, rechts die Python Variable
+return render_template("seite.html", eintraege=eintraege)
+```
+```html
+{{ eintraege }}
+```
+
+### Schleife
+```html
+{% for eintrag in eintraege %}
+    {{ eintrag.item_name }}
+{% endfor %}
+```
+
+### If-Bedingung
+```html
+{% if eintraege %}
+    Es gibt Einträge!
+{% else %}
+    Keine Einträge vorhanden.
+{% endif %}
+```
+
+### Syntax Übersicht
+- `{{ }}` = Wert ausgeben
+- `{% %}` = Logik (for, if, etc.)
+- `{# #}` = Kommentar (wird nicht angezeigt)

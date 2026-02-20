@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Übersicht</title>
 </head>
 <body>
-    
+    <h1>Übersicht</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Itemname</th>
+                <th>Kategorie</th>
+                <th>Anzahl</th>
+                <th>Kaufpreis (einzeln)</th>
+                <th>Gesamtpreis</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for eintrag in eintraege %}
+            <tr>
+                <td>{{ eintrag.date }}</td>
+                <td>{{ eintrag.item_name }}</td>
+                <td>{{ eintrag.item_type }}</td>
+                <td>{{ eintrag.item_quantity }}</td>
+                <td>{{ eintrag.purchase_price_per_unit }}</td>
+                <td>{{ eintrag.purchase_price_for_all }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

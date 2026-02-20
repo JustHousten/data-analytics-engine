@@ -8,20 +8,20 @@ app.config['SECRET_KEY'] = 'geheimer_schluessel'
 db = SQLAlchemy(app)
 
 class Uebersicht(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime)
-    item_name = db.Column(db.String(100), nullable=False)
-    item_type = db.Column(db.String(100), nullable=False)
-    item_quantity = db.Column(db.Integer, nullable=False)
-    purchase_price_per_unit = db.Column(db.Float, nullable=False)
-    purchase_price_for_all = db.Column(db.Float, nullable=False)
+    id                              = db.Column(db.Integer, primary_key=True)
+    date                            = db.Column(db.DateTime)
+    item_name                       = db.Column(db.String(100), nullable=False)
+    item_type                       = db.Column(db.String(100), nullable=False)
+    item_quantity                   = db.Column(db.Integer, nullable=False)
+    purchase_price_per_unit         = db.Column(db.Float, nullable=False)
+    purchase_price_for_all          = db.Column(db.Float, nullable=False)
 
 @app.route("/")
 def startseite():
-    return render_template("index.html")
+    return render_template("startseite.html")
 
-@app.route("/eintragen", methods=["GET", "POST"])
-def eintragen():
+@app.route("/trades", methods=["GET", "POST"])
+def trades():
     if request.method == "POST":
         neuer_eintrag = Uebersicht(
             date                    =   datetime.now(),
@@ -31,11 +31,15 @@ def eintragen():
             purchase_price_per_unit =   request.form["item-purchase-price-per-unit"],
             purchase_price_for_all  =   request.form["item-purchase-price-for-all"],
             )
-
         db.session.add(neuer_eintrag)
         db.session.commit()
-        return redirect("/")
-    return render_template("uebersicht.html")
+        return redirect("/uebersicht")
+    return render_template("trades.html")
+
+@app.route("/uebersicht")
+def uebersicht():
+    eintraege = Uebersicht.query.all()
+    return render_template("uebersicht.html", eintraege=eintraege)
 
 
 with app.app_context():
