@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startseite</title>
+</head>
+<body>
+    <h1>Startseite</h1>
+
+    <form action="/eintragen" method="POST">
+    <div>
+        <label for="item-name">Itemname:</label>
+        <input type="text" name="item-name" id="item-name">  
+    </div>
+    <div>
+        <label for="item-type">Kategorie:</label>
+        <input type="text" name="item-type" id="item-type">
+    </div>
+    <div>
+        <label for="item-quantity">Anzahl:</label>
+        <input type="number" name="item-quantity" id="item-quantity">
+    </div>
+    <div>
+        <label for="item-purchase-price-per-unit">Kaufpreis (einzeln):</label>
+        <input type="number" name="item-purchase-price-per-unit" id="item-purchase-price-per-unit">
+    </div>
+    <div>
+        <label for="item-purchase-price-for-all">Gesamtpreis (alle):</label>
+        <input type="number" name="item-purchase-price-for-all" id="item-purchase-price-for-all">
+    </div>
+    <div>
+        <button type="submit">Eintragen</button>
+    </div>
+    </form>
+</body>
+</html>
