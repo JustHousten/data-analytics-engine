@@ -15,6 +15,10 @@ class Uebersicht(db.Model):
     item_quantity                   = db.Column(db.Integer, nullable=False)
     purchase_price_per_unit         = db.Column(db.Float, nullable=False)
     purchase_price_for_all          = db.Column(db.Float, nullable=False)
+    selling_item_stack_quantity     = db.Column(db.Float, nullable=False)
+    selling_price_per_unit          = db.Column(db.Float, nullable=False)
+    selling_price_per_stack         = db.Column(db.Float, nullable=False)
+    selling_price_for_all           = db.Column(db.Float, nullable=False)
 
 @app.route("/")
 def startseite():
@@ -24,12 +28,16 @@ def startseite():
 def trades():
     if request.method == "POST":
         neuer_eintrag = Uebersicht(
-            date                    =   datetime.now(),
-            item_name               =   request.form["item-name"],
-            item_type               =   request.form["item-type"],
-            item_quantity           =   request.form["item-quantity"],
-            purchase_price_per_unit =   request.form["item-purchase-price-per-unit"],
-            purchase_price_for_all  =   request.form["item-purchase-price-for-all"],
+            date                            =   datetime.now(),
+            item_name                       =   request.form["item-name"],
+            item_type                       =   request.form["item-type"],
+            item_quantity                   =   request.form["item-quantity"],
+            purchase_price_per_unit         =   request.form["item-purchase-price-per-unit"],
+            purchase_price_for_all          =   request.form["item-purchase-price-for-all"],
+            selling_item_stack_quantity     =   request.form["selling-item-stack-quantity"],
+            selling_price_per_unit          =   request.form["item-selling-price-per-unit"],
+            selling_price_per_stack         =   request.form["item-selling-price-per-stack"],
+            selling_price_for_all           =   request.form["item-selling-price-for-all"]
             )
         db.session.add(neuer_eintrag)
         db.session.commit()

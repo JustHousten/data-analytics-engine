@@ -139,3 +139,11 @@ return render_template("seite.html", eintraege=eintraege)
 - `{{ }}` = Wert ausgeben
 - `{% %}` = Logik (for, if, etc.)
 - `{# #}` = Kommentar (wird nicht angezeigt)
+
+### Datum formatieren
+`strftime` ist eine Python-Methode die direkt in Jinja2 aufgerufen werden kann:
+```html
+{{ eintrag.date.strftime("%d.%m.%Y") }}   → 20.02.2026
+{{ eintrag.date.strftime("%H:%M") }}       → 21:47 (Uhrzeit)
+```
+**Wichtig:** Kein `|` Filter - direkt als Python-Methode mit `.` aufrufen!

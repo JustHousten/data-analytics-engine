@@ -15,19 +15,27 @@
                 <th>Itemname</th>
                 <th>Kategorie</th>
                 <th>Anzahl</th>
-                <th>Kaufpreis (einzeln)</th>
-                <th>Gesamtpreis</th>
+                <th>EK-Einzelpreis</th>
+                <th>EK-Gesamtpreis</th>
+                <th>VK-Anzahl (Stackgröße):</th>
+                <th>VK-Einzelpreis</th>
+                <th>VK-Stackpreis</th>
+                <th>VK-Gesamtpreis</th>
             </tr>
         </thead>
         <tbody>
             {% for eintrag in eintraege %}
             <tr>
-                <td>{{ eintrag.date }}</td>
+                <td>{{ eintrag.date.strftime("%d.%m.%Y") }}</td>
                 <td>{{ eintrag.item_name }}</td>
                 <td>{{ eintrag.item_type }}</td>
                 <td>{{ eintrag.item_quantity }}</td>
                 <td>{{ eintrag.purchase_price_per_unit }}</td>
                 <td>{{ eintrag.purchase_price_for_all }}</td>
+                <td>{{ eintrag.selling_item_stack_quantity }}</td>
+                <td>{{ eintrag.selling_price_per_unit }}</td>
+                <td>{{ eintrag.selling_price_per_stack }}</td>
+                <td>{{ eintrag.selling_price_for_all }}</td>
             </tr>
             {% endfor %}
         </tbody>
