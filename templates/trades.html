@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Neuer Trade</title>
 </head>
 <body>
+    <nav>
+        <a href="{{ url_for('startseite')}}">Startseite</a>
+        <a href="{{ url_for('trades')}}">Trades</a>
+        <a href="{{ url_for('uebersicht')}}">Übersicht</a>
+    </nav>
     <h1>Neuer Trade</h1>
 
     <form action="/trades" method="POST">

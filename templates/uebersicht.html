@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Übersicht</title>
 </head>
 <body>
+    <nav>
+        <a href="{{ url_for('startseite')}}">Startseite</a>
+        <a href="{{ url_for('trades')}}">Trades</a>
+        <a href="{{ url_for('uebersicht')}}">Übersicht</a>
+    </nav>
     <h1>Übersicht</h1>
 
     <table>
@@ -17,7 +23,7 @@
                 <th>Anzahl</th>
                 <th>EK-Einzelpreis</th>
                 <th>EK-Gesamtpreis</th>
-                <th>VK-Anzahl (Stackgröße):</th>
+                <th>VK-Anzahl (Stackgröße)</th>
                 <th>VK-Einzelpreis</th>
                 <th>VK-Stackpreis</th>
                 <th>VK-Gesamtpreis</th>
